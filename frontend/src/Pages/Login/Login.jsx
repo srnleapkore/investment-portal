@@ -3,6 +3,7 @@ import './Login.css'
 import {useNavigate} from 'react-router-dom'
 import { signInStart, signInSuccess, signInFailure } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from "../../Components/OAuth/OAuth";
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -67,6 +68,7 @@ export default function Login() {
               loading ? <span>Loading...</span> : "Login"
             }
           </button>
+          <OAuth/>
         </form>
         {errorMessage && (
           <div className="alert-error-message">

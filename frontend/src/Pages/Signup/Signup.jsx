@@ -3,6 +3,7 @@ import "./Signup.css";
 import {useNavigate} from 'react-router-dom'
 import { signInStart, signInSuccess, signInFailure } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from "../../Components/OAuth/OAuth";
 
 export default function Signup() {
   const [formData, setFormData] = useState({});
@@ -82,6 +83,7 @@ export default function Signup() {
                 loading ? <span>Loading...</span> : "Sign Up"
               }
             </button>
+            <OAuth/>
           </form>
           {errorMessage && (
             <div className="alert-error-message">
