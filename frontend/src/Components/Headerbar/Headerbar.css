@@ -17,15 +17,33 @@
 }
 .header-container .header-text-container {
   padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.header-container .header-text-container h4 {
-  font-size: 24px;
+.header-logo-container{
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: blueviolet;
+}
+
+.header-container .header-logo-container h1{
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+}
+.header-welcome-conatiner{
+  margin-left: 50px;
+}
+.header-container .header-text-container .header-welcome-conatiner h4 {
+  font-size: 20px;
   font-weight: 700;
   color: blueviolet;
 }
 
-.header-container .header-text-container h5 {
-  font-size: 16px;
+.header-container .header-text-container .header-welcome-conatiner h5 {
+  font-size: 15px;
   font-weight: 600;
   color: #313131;
 }
@@ -38,7 +56,7 @@
 
 .header-info-container .notification-icon {
   color: blueviolet;
-  background-color: rgb(237, 217, 255);
+  background-color: #f1f1f1;
   width: 25px;
   height: 25px;
   display: flex;

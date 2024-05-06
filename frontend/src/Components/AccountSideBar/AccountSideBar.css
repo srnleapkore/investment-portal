@@ -1,0 +1,52 @@
+.account-sidebar-main-container{
+    padding: 5px 30px;
+    margin: 0px;
+    background-color: #fff;
+    min-height: calc(100vh - 81px);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid #f1f1f1;
+}
+
+.account-sidebar-main-container .account-sidebar-menu-container{
+    width: 170px;
+}
+
+.account-sidebar-menu-container .account-menu-listing ul li{
+    margin: 20px 0;
+    list-style: none;
+
+}
+
+.account-sidebar-menu-container .account-menu-listing ul li a{
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+    padding: 10px 15px;
+    width: 140px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    color: blueviolet;
+}
+.account-menu-listing ul li.active a {
+    color: rgb(76, 8, 141); 
+    background-color: rgb(237, 217, 255); 
+}
+.account-menu-listing ul li.active i {
+    color: blueviolet; 
+}
+
+i{
+    color: rgb(76, 8, 141);
+    margin-top: 2px;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.account-menu-listing .account-sidebar-menu-text{
+    width: 170px;
+}

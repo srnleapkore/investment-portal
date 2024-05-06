@@ -22,8 +22,13 @@ export default function Headerbar() {
     <div>
       <div className="header-container">
         <div className="header-text-container">
-          <h4>Welcome to Portal</h4>
-          <h5>Begin a brighter future tomorrow</h5>
+          <div className="header-logo-container">
+            <h1>FinKore360</h1>
+          </div>
+          <div className="header-welcome-conatiner">
+            <h4>Welcome, {currentUser.firstname}</h4>
+            <h5>Begin a brighter future tomorrow</h5>
+          </div>
         </div>
         <div className="header-info-container">
           <div className="notification-icon">
