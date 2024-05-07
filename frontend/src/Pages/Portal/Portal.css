@@ -1,0 +1,17 @@
+
+.temporary-login-success-popup {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d7fe03;
+    border-radius: 50px;
+    padding: 5px 15px;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    outline: none;
+    color: #000;
+    cursor: none;
+    transition: 0.3s ease-in-out;
+  }

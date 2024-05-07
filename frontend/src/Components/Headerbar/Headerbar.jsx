@@ -39,7 +39,6 @@ export default function Headerbar() {
               className="profile-icon"
               onMouseEnter={toggleDropdown}
               onMouseLeave={toggleDropdown}
-              onClick={toggleDropdown}
             >
               <img src={currentUser.profilepicture} alt="profile" />
               <div

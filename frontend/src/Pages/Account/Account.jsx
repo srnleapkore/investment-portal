@@ -4,6 +4,7 @@ import Headerbar from "../../Components/Headerbar/Headerbar";
 import AccountSideBar from "../../Components/AccountSideBar/AccountSideBar";
 import AccountProfile from "../../Components/AccountProfile/AccountProfile";
 import './Account.css'
+import AccountMainTab from "../../Components/AccountMainTab/AccountMainTab";
 
 export default function Account() {
   const location = useLocation();
@@ -24,6 +25,9 @@ export default function Account() {
         </div>
         <div className="account-right-container">
           {tab === 'profile' && <AccountProfile/>}
+        </div>
+        <div className="account-right-container">
+          {tab === '' && <AccountMainTab/>}
         </div>
 
       </div>

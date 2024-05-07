@@ -1,21 +1,20 @@
 .account-sidebar-main-container{
-    padding: 5px 30px;
+    padding: 0px;
     margin: 0px;
     background-color: #fff;
-    min-height: calc(100vh - 81px);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+    border: 1px solid #f5f5f8;
+    width: 200px;
+    margin: 20px 30px;
 }
 
 .account-sidebar-main-container .account-sidebar-menu-container{
-    width: 170px;
+    width: 100%;
 }
 
 .account-sidebar-menu-container .account-menu-listing ul li{
-    margin: 20px 0;
     list-style: none;
-
+    margin: 15px;
 }
 
 .account-sidebar-menu-container .account-menu-listing ul li a{
@@ -29,24 +28,25 @@
     width: 140px;
     border: none;
     border-radius: 8px;
-    background-color: #f1f1f1;
-    color: blueviolet;
+    background-color: #fff;
+    color: #313131;
 }
 .account-menu-listing ul li.active a {
-    color: rgb(76, 8, 141); 
-    background-color: rgb(237, 217, 255); 
+    color: #313131; 
+    background-color: #d7fe03; 
 }
 .account-menu-listing ul li.active i {
-    color: blueviolet; 
+    color: #000; 
 }
 
 i{
-    color: rgb(76, 8, 141);
+    color: #313131;
     margin-top: 2px;
     font-size: 16px;
     margin-right: 5px;
 }
-
+/***
 .account-menu-listing .account-sidebar-menu-text{
     width: 170px;
 }
+***/

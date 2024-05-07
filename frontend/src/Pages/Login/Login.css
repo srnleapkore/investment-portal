@@ -1,105 +1,149 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 
-*{
-    font-family: 'Nunito Sans', sans-serif;
-    padding: 0;
-    margin: 0;
+* {
+  font-family: "Nunito Sans", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-.login-main-container{
-    width: 100%;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.login-main-container {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.login-main-container .left-login-container{
+.login-main-container .left-login-container {
   width: 40%;
 }
 
-.left-login-container .login-form-header{
-    max-width: 300px;
+.left-login-container .login-form-header {
+  max-width: 300px;
 }
 
-.left-login-container .login-form-header h5{
-    font-size: 24px;
-    font-weight: 800;
-    color: blueviolet;
+.left-login-container .login-form-header h5 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #83af3b;
+  margin-bottom: 3px;
 }
 
-.left-login-container .login-form-header h6{
-    font-size: 15px;
-    font-weight: 600;
-    color: #5b5b5b;
-    margin-top: 10px;
-    text-align: justify;
+.left-login-container .login-form-header h6 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #313131;
+  margin-top: 0px;
+  text-align: justify;
+  margin-bottom: 10px;
 }
 
-
-input{
-    background-color: #f1f1f1;
-    border-radius: 7px;
-    margin: 7px 0;
-    padding: 10px 15px;
-    border: none;
-    font-size: 13px;
-    font-weight: 500;
-    outline: 1px solid #fff;
-    transition: 0.3s ease-in-out;
+input {
+  background-color: #f5f5f8;
+  border-radius: 7px;
+  margin: 7px 0;
+  padding: 10px 15px;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  outline: 1px solid #f5f5f8;
+  transition: 0.3s ease-in-out;
 }
 
-input:hover{
-    outline: 1px solid rgb(237, 217, 255);
-    transition: 0.3s ease-in-out;
+input::placeholder {
+  color: #313131;
 }
 
-input::placeholder{
-    color: #313131;
+.login-button {
+  background-color: #d8fe0368;
+  border-radius: 50px;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  outline: #fff;
+  color: #000;
+  transition: 0.3s ease-in-out;
+}
+.login-button:hover {
+  background-color: #d7fe03;
+  color: #000;
+  transition: 0.3s ease-in-out;
 }
 
-.login-button{
-    background-color: rgb(237, 217, 255);
-    border-radius: 50px;
-    margin: 10px 0;
-    padding: 10px 15px;
-    border: none;
-    font-size: 13px;
-    font-weight: 600;
-    outline: #fff;
-    color: #313131;
-    transition: 0.3s ease-in-out;
-}
-.login-button:hover{
-    background-color: blueviolet;
-    color: #fff;
-    transition: 0.3s ease-in-out;
+.left-login-container .login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  max-width: 300px;
+  margin-top: 10px;
 }
 
-
-.left-login-container .login-form{
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-    max-width: 300px;
+.login-main-container .right-login-container {
+  width: 40%;
+  margin-left: 20px;
 }
 
-.login-main-container .right-login-container{
-    width: 40%;
-    margin-left: 20px;
+.right-login-container h1 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #83af3b;
 }
 
-.right-login-container h1{
-    font-size: 30px;
-    font-weight: 900;
-    color: blueviolet;
+.right-login-container p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #313131;
 }
 
-.right-login-container p{
-    font-size: 13px;
-    font-weight: 600;
-    color: #313131;
+.auth-redirection {
+  font-size: 13px;
+  font-weight: 500;
+  color: #313131;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.auth-redirection a {
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+  color: #83af3b;
+}
+
+.auth-redirection a:hover {
+  color: #d7fe03;
+}
+
+.alert-error-message {
+  width: 100%;
+  padding: 3px 0px;
+  background-color: rgba(130, 175, 59, 0.247);
+  backdrop-filter: blur(10px);
+  font-size: 10px;
+  font-weight: 400;
+  color: #313131;
+  text-align: center;
+  margin: 5px 0px;
+}
+
+.temporary-signup-success-popup {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d7fe03;
+  border-radius: 50px;
+  padding: 5px 15px;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  outline: none;
+  color: #000;
+  cursor: none;
+  transition: 0.3s ease-in-out;
 }

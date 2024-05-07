@@ -1,15 +1,21 @@
-import { useState } from "react";
-import "./Signup.css";
-import {useNavigate} from 'react-router-dom'
-import { signInStart, signInSuccess, signInFailure } from "../../redux/user/userSlice";
+import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { signInStart, signInSuccess, signInFailure, signUpSuccess, clearError } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../../Components/OAuth/OAuth";
+import { CircularProgress } from "@mui/material";
+import './Signup.css'
 
 export default function Signup() {
   const [formData, setFormData] = useState({});
-  const {loading, error: errorMessage} = useSelector(state => state.user);
+  const { loading, error: errorMessage } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(clearError());
+  }, [dispatch]);
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
@@ -33,11 +39,11 @@ export default function Signup() {
       });
       const data = await res.json();
       if(data.success === false){
-        //setLoading(false);
         dispatch(signInFailure(data.message));
       }
       if(res.ok){
-        dispatch(signInSuccess(data));
+        dispatch(signInSuccess());
+        dispatch(signUpSuccess({ ...data, firstName: formData.firstname }));
         navigate('/login');
       }
     } catch (error) {
@@ -52,6 +58,11 @@ export default function Signup() {
           <div className="signup-form-header">
             <h5>Register Now</h5>
             <h6>Manage your investments smarter!</h6>
+            {errorMessage && (
+            <div className="alert-error-message">
+              {errorMessage}
+            </div>
+          )}
           </div>
           <form className="signup-form" onSubmit={handleSubmit}>
             <input
@@ -80,16 +91,11 @@ export default function Signup() {
             />
             <button className="signup-button" type="submit" disabled={loading}>
               {
-                loading ? <span>Loading...</span> : "Sign Up"
+                loading ? <span><CircularProgress color="inherit" size={13} /><span> Loading...</span></span> : "Sign Up"
               }
             </button>
             <OAuth/>
-          </form>
-          {errorMessage && (
-            <div className="alert-error-message">
-              <h5>{errorMessage}</h5>
-            </div>
-          )}
+            
           <div className="auth-redirection">
             <h5>
               Have an account?{" "}
@@ -98,6 +104,7 @@ export default function Signup() {
               </span>
             </h5>
           </div>
+          </form>
         </div>
         <div className="right-signup-container">
           <h1>FinKore360</h1>

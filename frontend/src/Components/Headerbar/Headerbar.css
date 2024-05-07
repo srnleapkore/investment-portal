@@ -13,7 +13,7 @@
   display: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(237, 217, 255);
+  border-bottom: 1px solid #f5f5f8;
 }
 .header-container .header-text-container {
   padding: 0 30px;
@@ -25,13 +25,13 @@
   width: 200px;
   border-radius: 10px;
   text-align: center;
-  background-color: blueviolet;
+  background: linear-gradient(45deg, #d7fe03, #83af3b);
 }
 
 .header-container .header-logo-container h1{
   font-size: 32px;
   font-weight: 800;
-  color: #fff;
+  color: #313131;
 }
 .header-welcome-conatiner{
   margin-left: 50px;
@@ -39,7 +39,7 @@
 .header-container .header-text-container .header-welcome-conatiner h4 {
   font-size: 20px;
   font-weight: 700;
-  color: blueviolet;
+  color: #000;
 }
 
 .header-container .header-text-container .header-welcome-conatiner h5 {
@@ -55,8 +55,8 @@
 }
 
 .header-info-container .notification-icon {
-  color: blueviolet;
-  background-color: #f1f1f1;
+  color: #313131;
+  background-color: #f5f5f8;
   width: 25px;
   height: 25px;
   display: flex;
@@ -69,12 +69,12 @@
 }
 
 .header-info-container .profile-icon {
-  background-color: violet;
+  background-color: #f1f1f1;
   width: 33px;
   height: 33px;
   border-radius: 50%;
   border: none;
-  box-shadow: 0 0 5px 1px rgb(237, 217, 255);
+  box-shadow: 0 0 5px 1px #31313143
 }
 
 .header-info-container .profile-icon img {
@@ -86,12 +86,11 @@
 
 .dropdown-profile-menu {
   width: 140px;
-  margin-top: 15px;
+  margin-top: 12px;
   margin-left: -138px;
   height: auto;
   padding: 10px 15px;
   background-color: #fff;
-  box-shadow: 0 0 5px 1px #f1f1f1;
   border-radius: 10px;
   text-align: left;
   opacity: 0;
@@ -113,7 +112,7 @@
 .menu-divider {
   width: 100%;
   height: 1px;
-  background-color: rgb(237, 217, 255);
+  background: linear-gradient(60deg, #83af3b, #d7fe03);
   margin: 10px 0;
 }
 
@@ -129,17 +128,13 @@
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  color: blueviolet;
+  color: #000;
   transition: 0.3s ease-in-out;
 }
 
 .dropdown-profile-menu ul li a:hover {
-  color: rgb(76, 8, 141);
+  color: #83af3b;
   transition: 0.3s ease-in-out;
-}
-
-.dropdown-profile-menu .dropdown-email p {
-  color: rgb(76, 8, 141);
 }
 
 .dropdown-profile-menu .logout-header-button {
@@ -148,16 +143,15 @@
   margin-bottom: 0;
   font-size: 12px;
   font-weight: 600;
-  background-color: rgb(237, 217, 255);
   border: none;
+  background: linear-gradient(60deg, #000, #313131);
   border-radius: 5px;
-  color: blueviolet;
+  color: #fff;
   transition: 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .dropdown-profile-menu .logout-header-button:hover {
-  background-color: rgb(76, 8, 141);
   transition: 0.3s ease-in-out;
-  color: #fff;
+  color: #d7fe03;
 }
