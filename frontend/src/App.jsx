@@ -4,6 +4,8 @@ import Account from "./Pages/Account/Account";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
+import OnlyAdminPrivateRoute from "./Components/OnlyAdminPrivateRoute.jsx";
+import AdminDashboard from "./Pages/AdminDashboard/AdminDashboard.jsx";
 
 export default function App() {
   return (
@@ -14,6 +16,9 @@ export default function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Portal />} />
           <Route path="/account" element={<Account />} />
+        </Route>
+        <Route element={<OnlyAdminPrivateRoute />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>

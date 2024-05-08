@@ -1,0 +1,47 @@
+.portal-sidebar-main-container{
+    padding: 0px;
+    margin: 0px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #f5f5f8;
+    width: 200px;
+    margin: 20px 30px;
+}
+
+.portal-sidebar-main-container .portal-sidebar-menu-container{
+    width: 100%;
+}
+
+.portal-sidebar-menu-container .portal-menu-listing ul li{
+    list-style: none;
+    margin: 15px;
+}
+
+.portal-sidebar-menu-container .portal-menu-listing ul li a{
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+    padding: 10px 15px;
+    width: 140px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #313131;
+}
+.portal-menu-listing ul li.active a {
+    color: #313131; 
+    background-color: #d7fe03; 
+}
+.portal-menu-listing ul li.active i {
+    color: #000; 
+}
+
+i{
+    color: #313131;
+    margin-top: 2px;
+    font-size: 16px;
+    margin-right: 5px;
+}

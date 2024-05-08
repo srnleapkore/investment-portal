@@ -24,10 +24,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "https://cdn2.f-cdn.com/files/download/38545966/4bce6b.jpg",
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;

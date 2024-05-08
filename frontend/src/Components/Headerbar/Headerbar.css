@@ -25,7 +25,7 @@
   width: 200px;
   border-radius: 10px;
   text-align: center;
-  background: linear-gradient(45deg, #d7fe03, #83af3b);
+  background: none;
 }
 
 .header-container .header-logo-container h1{

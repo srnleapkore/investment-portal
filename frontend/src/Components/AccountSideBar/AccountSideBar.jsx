@@ -1,8 +1,9 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOutMSuccess, logoutSuccess } from "../../redux/user/userSlice";
 import "./AccountSideBar.css";
 
 export default function AccountSideBar() {
+  const {currentUser} = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const getActiveTab = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -67,6 +68,16 @@ export default function AccountSideBar() {
                   Logout
                 </a>
               </li>
+              {currentUser.isAdmin && (
+                <li>
+                <a href="/admin/dashboard">
+                  <span >
+                    <i className="bx bxs-log-out-circle"></i>
+                  </span>
+                  Dashboard
+                </a>
+              </li>
+              )}
             </ul>
           </div>
         </div>

@@ -315,7 +315,10 @@ export default function AccountProfile() {
                       />
                     </div>
                   )}
-                  <button className="update-button" type="submit">
+                  <button
+                    className="update-button"
+                    type="submit"
+                  >
                     Update Profile Image
                   </button>
                 </div>
@@ -326,45 +329,51 @@ export default function AccountProfile() {
                 </div>
               )}
             </div>
-            </div>
-            <div>
-              {showModel && <div className="overlay"></div>}
-              <div
-                className={`account-action-tab-container ${
-                  showModel ? "overlay-active" : ""
-                }`}
-              >
-                <div className="delete-account-container">
-                  <h1>Want to delete your account?</h1>
-                  <p>Note: Please note that once you proceed with deletion, your profile cannot be recovered.</p>
-                  <button onClick={() => setShowModel(true)} className="delete-profile-main-button">Delete Account</button>
-                 
-                </div>
+          </div>
+          <div>
+            {showModel && <div className="overlay"></div>}
+            <div
+              className={`account-action-tab-container ${
+                showModel ? "overlay-active" : ""
+              }`}
+            >
+              <div className="delete-account-container">
+                <h1>Want to delete your account?</h1>
+                <p>
+                  Note: Please note that once you proceed with deletion, your
+                  profile cannot be recovered.
+                </p>
+                <button
+                  onClick={() => setShowModel(true)}
+                  className="delete-profile-main-button"
+                >
+                  Delete Account
+                </button>
               </div>
-              {showModel && (
-                <div className="popup-delete-confirmation">
-                  <div className="popup-delete-content">
-                    <h5>Confirm your request!</h5>
-                    <p>Are you sure you want to delete your profile?</p>
-                    <div className="delete-profile-button-container">
-                      <button
-                        className="close-delete-profile-button"
-                        onClick={() => setShowModel(false)}
-                      >
-                        Abort
-                      </button>
-                      <button
-                        className="delete-profile-button"
-                        onClick={handleDeleteUser}
-                      >
-                        Confirm
-                      </button>
-                    </div>
+            </div>
+            {showModel && (
+              <div className="popup-delete-confirmation">
+                <div className="popup-delete-content">
+                  <h5>Confirm your request!</h5>
+                  <p>Are you sure you want to delete your profile?</p>
+                  <div className="delete-profile-button-container">
+                    <button
+                      className="close-delete-profile-button"
+                      onClick={() => setShowModel(false)}
+                    >
+                      Abort
+                    </button>
+                    <button
+                      className="delete-profile-button"
+                      onClick={handleDeleteUser}
+                    >
+                      Confirm
+                    </button>
                   </div>
                 </div>
-              )}
-            </div>
-          
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="account-change-password-main-container">
