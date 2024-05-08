@@ -1,15 +1,34 @@
+import { useDispatch } from "react-redux";
+import { logOutMSuccess, logoutSuccess } from "../../redux/user/userSlice";
 import "./AccountSideBar.css";
 
 export default function AccountSideBar() {
-  // Function to extract tab information from URL
+  const dispatch = useDispatch();
   const getActiveTab = () => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get("tab");
   };
 
-  // Define the active tab
   const activeTab = getActiveTab();
-
+ 
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch(`/api/user/logout`, {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message); 
+      } else {
+        
+        dispatch(logOutMSuccess("Logged Out Successfully!"));
+        dispatch(logoutSuccess()); 
+      }
+    } catch (error) {
+      console.log(error.message); 
+    }
+  };
+ 
   return (
     <div>
       <link
@@ -40,9 +59,9 @@ export default function AccountSideBar() {
                   My account
                 </a>
               </li>
-              <li className={activeTab === "logout" ? "active" : ""}>
+              <li onClick={handleSignOut} className={activeTab === "logout" ? "active" : ""}>
                 <a href="/account?tab=logout">
-                  <span>
+                  <span >
                     <i className="bx bxs-log-out-circle"></i>
                   </span>
                   Logout

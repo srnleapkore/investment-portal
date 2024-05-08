@@ -7,6 +7,7 @@ import {
   signUpSuccess,
   clearError,
   loginSuccess,
+  logOutMSuccess,
 } from "../../redux/user/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from "../../Components/OAuth/OAuth";
@@ -19,6 +20,7 @@ export default function Login() {
     loading,
     error: errorMessage,
     signUpData,
+    logoutData,
   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -60,10 +62,18 @@ export default function Login() {
   useEffect(() => {
     if (signUpData) {
       setTimeout(() => {
-        dispatch(signUpSuccess(null)); // Clear signUpData after 5 seconds
+        dispatch(signUpSuccess(null));
       }, 5000);
     }
   }, [signUpData, dispatch]);
+
+  useEffect(() => {
+    if (logoutData) {
+      setTimeout(() => {
+        dispatch(logOutMSuccess(null));
+      }, 5000);
+    }
+  }, [logoutData, dispatch]);
 
   return (
     <div>
@@ -73,6 +83,11 @@ export default function Login() {
             {signUpData && (
               <div className="temporary-signup-success-popup">
                 Hi {signUpData.firstName}, your signup is successful, login now!
+              </div>
+            )}
+            {logoutData && (
+              <div className="temporary-signup-success-popup">
+                Logged Out Successfully!
               </div>
             )}
             <h5>Login Now</h5>

@@ -1,9 +1,11 @@
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import "./Headerbar.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { logOutMSuccess, logoutSuccess } from "../../redux/user/userSlice";
 
 export default function Headerbar() {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -16,6 +18,24 @@ export default function Headerbar() {
       return email.substring(0, limit) + "...";
     }
     return email;
+  };
+
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch(`/api/user/logout`, {
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message); 
+      } else {
+        
+        dispatch(logOutMSuccess("Logged Out Successfully!"));
+        dispatch(logoutSuccess()); 
+      }
+    } catch (error) {
+      console.log(error.message); 
+    }
   };
 
   return (
@@ -60,7 +80,7 @@ export default function Headerbar() {
                   </li>
 
                   <li>
-                    <button className="logout-header-button">Logout</button>
+                    <button className="logout-header-button" onClick={handleSignOut}>Logout</button>
                   </li>
                 </ul>
               </div>
