@@ -11,6 +11,9 @@ import {
   updateStart,
   updateSuccess,
   updateFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  deleteUserFailure,
 } from "../../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import "./AccountProfile.css";
@@ -27,6 +30,7 @@ export default function AccountProfile() {
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
   const [updateUserError, setUpdateUserError] = useState(null);
   const [updatePassError, setUpdatePassError] = useState(null);
+  const [showModel, setShowModel] = useState(false);
   const [profileFormData, setProfileFormData] = useState({
     firstname: currentUser.firstname,
     lastname: currentUser.lastname,
@@ -69,7 +73,9 @@ export default function AccountProfile() {
         setimageFileUploadingProgress(progress.toFixed(0));
       },
       (error) => {
-        setimageFileUploadError("Error uploading image to cloud");
+        setimageFileUploadError(
+          "Failed to upload the image. File should be less than 2MB"
+        );
         setimageFileUploadingProgress(null);
         setImageFile(null);
         setImageFileUrl(null);
@@ -87,6 +93,20 @@ export default function AccountProfile() {
       }
     );
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showModel && !event.target.closest(".popup-delete-confirmation")) {
+        setShowModel(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showModel]);
 
   const handleProfileChange = (e) => {
     setProfileFormData({ ...profileFormData, [e.target.id]: e.target.value });
@@ -202,6 +222,24 @@ export default function AccountProfile() {
     }
   };
 
+  const handleDeleteUser = async () => {
+    setShowModel(false);
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/deleteuser/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res) {
+        dispatch(deleteUserFailure(data.message));
+      } else {
+        dispatch(deleteUserSuccess(data));
+      }
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
+
   return (
     <div>
       {updateUserSuccess && (
@@ -210,79 +248,125 @@ export default function AccountProfile() {
         </div>
       )}
       <div className="profile-tab-main-container-grid">
-        <div className="account-profile-main-container">
-          <div className="account-profile-header-container">
-            <h1>Profile Details</h1>
-          </div>
-          <div className="account-profile-info-change-container">
-            <form onSubmit={handleProfileSubmit}>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                ref={filePickerRef}
-                hidden
-              ></input>
-              <div
-                className="user-profile-change-picture"
-                onClick={() => filePickerRef.current.click()}
-              >
-                <img
-                  src={imageFileUrl || currentUser.profilepicture}
-                  alt="user"
-                />
-                <i className="bx bxs-edit-alt"></i>
-              </div>
-              {imageFileUploadError && (
-                <div className="image-upload-error">{imageFileUploadError}</div>
-              )}
-              
+        <div className="vertical-tab-profile">
+          <div className="account-profile-main-container">
+            <div className="account-profile-header-container">
+              <h1>Profile Details</h1>
+            </div>
+            <div className="account-profile-info-change-container">
+              <form onSubmit={handleProfileSubmit}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  ref={filePickerRef}
+                  hidden
+                ></input>
+                <div
+                  className="user-profile-change-picture"
+                  onClick={() => filePickerRef.current.click()}
+                >
+                  <img
+                    src={imageFileUrl || currentUser.profilepicture}
+                    alt="user"
+                  />
+                  <i className="bx bxs-edit-alt"></i>
+                </div>
+                {imageFileUploadError && (
+                  <div className="image-upload-error">
+                    {imageFileUploadError}
+                  </div>
+                )}
 
-              <div className="my-profile-info-canva">
-                <input
-                  className="none-writable-input"
-                  type="text"
-                  id="firstname"
-                  placeholder="firstname"
-                  value={profileFormData.firstname}
-                  title="You don't have access to edit this field"
-                  disabled
-                />
-                <input
-                  className="none-writable-input"
-                  type="text"
-                  id="lastname"
-                  placeholder="lastname"
-                  value={profileFormData.lastname}
-                  title="You don't have access to edit this field"
-                  disabled
-                />
-                <input
-                  className="none-writable-input"
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  value={profileFormData.email}
-                  title="You don't have access to edit this field"
-                  disabled
-                />
-                {imageFileUploadingProgress && (
-                <div className="image-upload-progress">
-                <LinearProgress variant="determinate" value={imageFileUploadingProgress} className="custom-progress"/>
+                <div className="my-profile-info-canva">
+                  <input
+                    className="none-writable-input"
+                    type="text"
+                    id="firstname"
+                    placeholder="firstname"
+                    value={profileFormData.firstname}
+                    title="You don't have access to edit this field"
+                    disabled
+                  />
+                  <input
+                    className="none-writable-input"
+                    type="text"
+                    id="lastname"
+                    placeholder="lastname"
+                    value={profileFormData.lastname}
+                    title="You don't have access to edit this field"
+                    disabled
+                  />
+                  <input
+                    className="none-writable-input"
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    value={profileFormData.email}
+                    title="You don't have access to edit this field"
+                    disabled
+                  />
+                  {imageFileUploadingProgress && (
+                    <div className="image-upload-progress">
+                      <LinearProgress
+                        variant="determinate"
+                        value={imageFileUploadingProgress}
+                        className="custom-progress"
+                      />
+                    </div>
+                  )}
+                  <button className="update-button" type="submit">
+                    Update Profile Image
+                  </button>
+                </div>
+              </form>
+              {updateUserError && (
+                <div className="profile-update-error-alert">
+                  {updateUserError}
                 </div>
               )}
-                <button className="update-button" type="submit">
-                  Update Profile Image
-                </button>
+            </div>
+            </div>
+            <div>
+              {showModel && <div className="overlay"></div>}
+              <div
+                className={`account-action-tab-container ${
+                  showModel ? "overlay-active" : ""
+                }`}
+              >
+                <div className="delete-account-container">
+                  <h1>Want to delete your account?</h1>
+                  <p>Note: Please note that once you proceed with deletion, your profile cannot be recovered.</p>
+                  <button onClick={() => setShowModel(true)} className="delete-profile-main-button">Delete Account</button>
+                 
+                </div>
               </div>
-            </form>
-            {updateUserError && (
-              <div className="profile-update-error-alert">
-                {updateUserError}
-              </div>
-            )}
-          </div>
+              {showModel && (
+                <div className="popup-delete-confirmation">
+                  <div className="popup-delete-content">
+                    <h5>Confirm your request!</h5>
+                    <p>Are you sure you want to delete your profile?</p>
+                    <div className="delete-profile-button-container">
+                      <button
+                        className="close-delete-profile-button"
+                        onClick={() => setShowModel(false)}
+                      >
+                        Abort
+                      </button>
+                      <button
+                        className="delete-profile-button"
+                        onClick={handleDeleteUser}
+                      >
+                        Confirm
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          
         </div>
+
         <div className="account-change-password-main-container">
           <div className="account-profile-header-container">
             <h1>Change Password</h1>

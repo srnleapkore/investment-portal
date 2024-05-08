@@ -25,9 +25,8 @@ export default function Account() {
         </div>
         <div className="account-right-container">
           {tab === 'profile' && <AccountProfile/>}
-          {tab === '' && <AccountMainTab/>}
-        </div>
-          
+          {tab === 'myaccount' && <AccountMainTab/>}
+        </div>    
       </div>
     </div>
   );

@@ -1,0 +1,65 @@
+.account-tab-main-container{
+    background: linear-gradient(120deg, #313131, #000);
+    margin: 20px 0;
+    margin-right: 30px;
+    padding: 20px;
+    border-radius: 10px; 
+}
+
+.account-tab-main-container h1{
+   color: #d7fe03;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.account-tab-main-container p{
+    color: #fff;
+     font-size: 14px;
+     font-weight: 500;
+     margin: 10px 0;
+ }
+
+ .account-navigator-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-top: 20px;
+ }
+
+
+
+ .dashboard-redirect-button a{
+    text-decoration: none;
+padding: 6px 12px;
+  margin-top: 10px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background: #fff;
+  color: #000;
+  display: none;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.3s ease-in-out;
+ }
+
+ .profile-redirect-button a{
+    text-decoration: none;
+padding: 6px 16px;
+  margin-top: 10px;
+  margin-left: 0px;
+  border-radius: 25px;
+  outline: none;
+  border: 2px solid #83af3b;
+  background: transparent;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.3s ease-in-out;
+ }
+ .profile-redirect-button a:hover{
+  background: #83af3b;
+  color: #313131;
+  transition: 0.3s ease-in-out;
+ }
